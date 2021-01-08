@@ -10,15 +10,16 @@ export default class Question extends React.Component{
         isCompleted:this.props.ex.isCompleted,
         counter:0
 
-        mybody:{}
+       
     }
     
     handleSubmit = async(index)=>{
        this.setState({correct:index})
        console.log(index)
-        const response = await answerExam(this.props.ex._id,this.state.correct,this.state.mybody)
+        const response = await answerExam(this.props.ex._id,index)
         console.log(this.props.ex._id)
         this.state.counter+=1
+        console.log(this.state.counter)
     }
     // componentDidUpdate = async()=>{
     //     await getExamScore(this.props.ex._id)
@@ -54,6 +55,7 @@ export default class Question extends React.Component{
             ): (
                 <div>
                 <h5>Your score is {this.props.ex.score} </h5>
+                <h5>candidateName : {this.props.ex.candidateName}</h5>
                 </div>
                
             )}
